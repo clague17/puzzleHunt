@@ -1,0 +1,24 @@
+{
+  "name": "puzzlehunt",
+  "version": "1.0.0",
+  "description": "This is a simple webapp for the CS Club Puzzle Hunt event",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clague17/puzzleHunt.git"
+  },
+  "author": "Luis Clague",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/clague17/puzzleHunt/issues"
+  },
+  "homepage": "https://github.com/clague17/puzzleHunt#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
