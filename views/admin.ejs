@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+        <style>
+        .content-grid {
+  		margin-left: auto;
+  		margin-right: auto;
+  	        width: 1000px;
+  	}
+  	.main-text-pane {
+                display: flex;
+                min-height: 512px;
+                overflow: hidden;
+  		flex-flow: column;
+                width: 100%;
+  	}
+  	#dark {
+  		background-color: rgb(243,243,243);
+  	}
+  	#light {
+  		background-color: #f6f6f6;
+  	}
+  	#color {
+  		background-color: #46B6AC;
+  	}
+  	.mdl-typography--text-left h1{
+  		padding-left: 20px;
+  	}
+        </style>
+
+        <meta charset="utf-8">
+        <title>Test</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <!-- <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
+        <script src="/node_modules/material-design-lite/material.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'> -->
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+  </head>
+  <body>
+
+
+  <script src="https://www.gstatic.com/firebasejs/5.8.4/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDNhuCXtsK_UfphF7ZJHL8f82NZ_JJcPKs",
+      authDomain: "puzzlehunt-b6bea.firebaseapp.com",
+      databaseURL: "https://puzzlehunt-b6bea.firebaseio.com",
+      projectId: "puzzlehunt-b6bea",
+      storageBucket: "puzzlehunt-b6bea.appspot.com",
+      messagingSenderId: "607507350359"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '987997444728003',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v3.2'
+      });
+
+      FB.AppEvents.logPageView();
+
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <div id="fb-root"></div>
+  <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.2&appId=987997444728003"></script>
+  <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+  <!-- Always shows a header, even in smaller screens. -->
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+          <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+              <!-- Title -->
+              <span class="mdl-layout-title">ADMIN</span>
+              <!-- Add spacer, to align navigation to the right -->
+              <div class="mdl-layout-spacer"></div>
+              <!-- Navigation. We hide it in small screens. -->
+              <nav class="mdl-navigation mdl-layout--large-screen-only">
+                <a class="mdl-navigation__link" href="/">Home</a>
+                <a class="mdl-navigation__link" href="/puzzles">Puzzles</a>
+              </nav>
+            </div>
+          </header>
+        </div>
+        <main class="mdl-layout__content" style="display:-webkit-box;">
+                <div class="content-grid" style="padding-top: 63px;">
+                        <div class="page-content">
+                                <div class="main-text-pane" id="light">
+                                        <div class="container">
+                                          <fieldset>
+                                            <form action="/" method="post">
+                                              <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
+                                              <input type="submit" class="ghost-button" value="Get Weather">
+                                            </form>
+                                        </fieldset>
+                                          <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="content-grid mdl-grid">
+        			<div class="mdl-cell mdl-cell--8-col">
+
+        			</div>
+                        </div>
+                </div>
+        </main>
+ </body>
+</html>

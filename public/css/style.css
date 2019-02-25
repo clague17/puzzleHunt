@@ -73,3 +73,100 @@ fieldset {
 p {
   color: #E64A19;
 }
+
+ .mdl-layout__content {
+     -ms-flex: 0 1 auto;
+     position: relative;
+     display: -webkit-box;
+     overflow-y: auto;
+     overflow-x: hidden;
+     -webkit-flex-grow: 1;
+     -ms-flex-positive: 1;
+     flex-grow: 1;
+     z-index: 1;
+     -webkit-overflow-scrolling: touch;
+ }
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  /* line-height: 2; */
+  font-size: 20px;
+  line-height: 2;
+  color: #444;
+  background-color: #eeeeee;
+}
+
+main {
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*nav {
+  background-color: #283593;
+}
+
+nav a {
+  color: white;
+  display: inline-block;
+  font-size: 24px;
+  margin: 15px;
+  text-decoration: none;
+}*/
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+}
+
+table td{
+  margin-left: auto;
+  margin-right: auto;
+  width: 50px;
+}
+
+#infinitescroll {
+  height: 500px;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y: scroll;
+}
+
+
+#container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+
+.checkmark {
+  height: 400px;
+  width: 400px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+h1 {
+  color: #757575;
+}
+
+input {
+  font-size: 18px;
+}
+
+button {
+  font-size: 18px;
+}
+
+.mdl-layout-title {
+  font-weight: bold;
+}
+
+.two-containers {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}

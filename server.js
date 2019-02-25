@@ -9,6 +9,15 @@ app.set('view engine', 'ejs')
 app.get('/', function (req, res) {
   res.render('index');
 })
+
+app.get('/admin.ejs', function (req, res) {
+  res.render('admin');
+})
+
+app.get('/puzzles', function (req, res) {
+  res.render('puzzles');
+})
+
 app.post('/', function (req, res) {
   console.log(req.body.city);
   res.render('index');
