@@ -4,6 +4,13 @@ const app = express()
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get('/js/logic.js',function(req,res){
+   res.sendFile(path.join(__dirname + '/js/logic.js'));
+});
+
+
+
 app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
