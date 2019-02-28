@@ -6,6 +6,9 @@ var createTeam = function() {
         //stress that this cannot be changed later.
 }
 
+var answers = {1: }
+
+
 var team;
 var rank;
 var teamName;
@@ -143,6 +146,8 @@ window.fbAsyncInit = function() {
 
     }
 
+    var sortedTeams;
+
     var ref = database.ref('teams');
     ref.on('value', gotData, errData);
 
@@ -158,7 +163,6 @@ window.fbAsyncInit = function() {
             var teamName = teams[k].teamName;
             var userList = teams[k].users;
             var puzzlesSolved = teams[k].puzzlesSolved;
-
             var table = document.getElementById('teamList');
             var members = document.getElementById('usuarios');
             var teamNames = document.getElementById('teamName');
@@ -173,8 +177,13 @@ window.fbAsyncInit = function() {
             cell3.innerHTML = puzzlesSolved;
         }
     }
+
     function errData(err){
         console.log('Error!');
         alert('YOU DID SOMETHING WRONG LMAO');
         console.log(err);
+    }
+
+    function verifyAnswer(inputString) {
+
     }

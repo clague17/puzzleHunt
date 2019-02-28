@@ -67,38 +67,6 @@
     var database = firebase.database();
   </script>
 
-  <script>
-
-    // Load the SDK asynchronously
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "https://connect.facebook.net/en_US/sdk.js";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    // Here we run a very simple test of the Graph API after login is
-    // successful.  See statusChangeCallback() for when this call is made.
-    // function testAPI() {
-    //   console.log('Welcome!  Fetching your information.... ');
-    //   FB.api('/me', function(response) {
-    //     console.log('Successful login for: ' + response.name);
-    //     document.getElementById('status').innerHTML =
-    //       'Thanks for logging in, ' + response.name + '!';
-    //   });
-    // }
-  </script>
-
-  <script>
-  function checkLogin() {
-        if (isLoggedIn) {
-                alert("LO HICIMOS");
-        } else {
-                alert("NOT LOGGED");
-        }
-  }
-  </script>
 
   <!-- <script>
     window.fbAsyncInit = function() {
@@ -148,20 +116,40 @@
                 <div class="content-grid" style="padding-top: 63px;">
                         <div class="page-content">
                                 <div class="main-text-pane" id="light">
-                                        <div class="container">
-                                          <fieldset>
-                                        <h2></h2>
-                                          </fieldset>
-                                          <div class="fb-login-button" onclick="checkLoginState()" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
-                                        </div>
                                 <div class="content-grid mdl-grid">
                 			<div class="mdl-cell mdl-cell--8-col">
-                                                <input id="teamName" type="teamName" placeholder="Team Name">
+                                                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                    <input id="teamName" class="mdl-textfield__input" type="text">
+                                                    <label class="mdl-textfield__label" for="teamName">Team Name...</label>
+                                                  </div>
+
+                                                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                    <input id="user1" class="mdl-textfield__input" type="text">
+                                                    <label class="mdl-textfield__label" for="user1">User 1...</label>
+                                                  </div>
+
+                                                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                    <input id="user2" class="mdl-textfield__input" type="text">
+                                                    <label class="mdl-textfield__label" for="user2">User 2...</label>
+                                                  </div>
+
+                                                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+
+                                                    <input id="user3" class="mdl-textfield__input" type="text">
+                                                    <label class="mdl-textfield__label" for="user3">User 3...</label>
+                                                  </div>
+
+                                                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                    <input id="user4" class="mdl-textfield__input" type="text">
+                                                    <label class="mdl-textfield__label" for="user4">User 4...</label>
+                                                  </div>
+
+                                                <!-- <input id="teamName" type="teamName" placeholder="Team Name">
                                                 <input id="user1" type="user1" placeholder="Team Member 1">
                                                 <input id="user2" type="user2" placeholder="Team Member 2">
                                                 <input id="user3" type="user3" placeholder="Team Member 3">
-                                                <input id="user4" type="user4" placeholder="Team Member 4">
-                                                <button id="btnCreateTeam" onclick="newTeam()" class="btn btn-action">
+                                                <input id="user4" type="user4" placeholder="Team Member 4"> -->
+                                                <button id="btnCreateTeam" onclick="newTeam()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                                                     Create Team
                                                 </button>
                                                         <ul class="demo-list-two mdl-list" id="TABLEhere">
@@ -199,9 +187,7 @@
                                                            <th style="width:40%">Puzzles Solved</th>
                                                        </thead>
                                                    </table> -->
-                                                   </div>
-
-                                                <button onclick="checkLogin();" value="DEEZNUTS" style="width: 20px;">
+                                           </div>
                 			</div>
                                 </div>
                         </div>
