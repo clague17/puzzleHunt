@@ -1,15 +1,3 @@
-var createTeam = function() {
-        isLoggedIn() //check if logged in
-
-        //then check if this person already has a team within the database, can only be done once.
-        //then proceed to a different page where this person specifies the names of the team members that will make up the team
-        //stress that this cannot be changed later.
-}
-
-var answers = { 1 : 'answer1',
-                2 : 'answer2',
-                3 : 'answer3'};
-
 
 var team;
 var rank;
@@ -17,27 +5,6 @@ var teamName;
 var puzzlesSolved;
 
 var displayCounter = 0;
-
-    //getting elements for auth
-//Sign in User
-
-
-// firebase.auth().signInWithPopup(provider).then(function(result) {
-//   // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-//   var token = result.credential.accessToken;
-//   // The signed-in user info.
-//   var user = result.user;
-//   // ...
-// }).catch(function(error) {
-//   // Handle Errors here.
-//   var errorCode = error.code;
-//   var errorMessage = error.message;
-//   // The email of the user's account used.
-//   var email = error.email;
-//   // The firebase.auth.AuthCredential type that was used.
-//   var credential = error.credential;
-//   // ...
-// });
 
 // This is called with the results from from FB.getLoginStatus().
 var isLoggedIn = false;
@@ -65,7 +32,6 @@ function statusChangeCallback(response) {
 // code below.
 function checkLoginState() {
   FB.getLoginStatus(function(response) {
-    console.log("Your mom");
     console.log(response.status);
     if (response.status === 'connected') {
             isLoggedIn = true;
@@ -142,42 +108,54 @@ window.fbAsyncInit = function() {
                         ];
 
            var regex = new RegExp("^\\s+$");
-           if (regex.test(teamName) {
+           var emptyStr = new RegExp("^$");
+           if (regex.test(teamName)) {
                    alert("Please enter a non-empty team Name");
+                   return;
            }
            for (var i = 0; i < userArray.length; i++) {
-                  if ((regex.test(userArray[i])) {
-                        alert("User " + i + " had malformed input, please try again");
+                  if (regex.test(userArray[i]) || emptyStr.test(userArray[i])) {
+                        if (actualUsers.length < 2) {
+                                alert("User " + i + " had malformed input, please try again");
+                        }
                 } else {
                         actualUsers.push(userArray[i]);
                 }
            }
+           console.log(actualUsers);
            if (actualUsers.length < 2) {
                    alert("need a team of 2 or more valid users!");
+                   return;
            }
-
+           newTeam(teamName, actualUsers);
     }
 
-    function newTeam(){
-        if database.ref('teams').once('value'),then((data) => {
+    function newTeam(newName, actualUsers){
+        var uniqueName = true;
+        database.ref('teams').once('value').then((data) => {
                 var teams = data.val();
-                var values = Object.values(teams);
-                var allTeams =
+                if (Object.values(teams) === null) {
+                        return;
+                }
+                var nameVals = Object.values(teams).map((val) => val.teamName);
+                // console.log(values);
+                console.log(nameVals);
+                console.log(newName.toString());
+                console.log(newName in nameVals);
+                if (nameVals.includes(newName)) {uniqueName = false;}
         });
-        var newTeam = {
-            teamName: document.getElementById('teamName').value,
-            users: [document.getElementById('user1').value,
-                        document.getElementById('user2').value,
-                        document.getElementById('user3').value,
-                        document.getElementById('user4').value],
-            puzzlesSolved: 0,
-            puzzles : {1000: true}
+        if (uniqueName) {
+                var newTeam = {
+                    teamName: teamName,
+                    users: actualUsers,
+                    puzzlesSolved: 0,
+                    puzzles : {1000: true}
+                }
+                database.ref('teams').push(newTeam);
+        } else {
+                alert("That team name has already been taken! Please choose a new one.");
         }
-        console.log(newTeam)
-        ref.push(newTeam);
     }
-
-    var sortedTeams;
 
     var ref = database.ref('teams');
     ref.on('value', gotData, errData);
@@ -186,7 +164,6 @@ window.fbAsyncInit = function() {
         var teams = data.val();
         var keys = Object.keys(teams);
 
-        console.log(keys);
         for(var i=displayCounter; i<keys.length; i++){
             displayCounter++;
             var k = keys[i];

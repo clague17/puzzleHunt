@@ -71,7 +71,6 @@
               <!-- Navigation. We hide it in small screens. -->
               <nav class="mdl-navigation mdl-layout--large-screen-only">
                 <a class="mdl-navigation__link" href="/">Home</a>
-                <a class="mdl-navigation__link" href="/admin.ejs">Admin</a>
               </nav>
             </div>
           </header>
@@ -94,7 +93,7 @@
                                                           <input id="answerTry" class="mdl-textfield__input" type="text">
                                                           <label class="mdl-textfield__label" for="user1">Answer...</label>
                                                         </div>
-                                                        <button id="btnCreateTeam" onclick="verifyAnswer()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                                        <button data-arg1="1" id="btnCreateTeam" onclick="verify1()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                                                             Submit
                                                         </button>
                                                 </div>
@@ -112,7 +111,7 @@
                                                           <input id="answerTry" class="mdl-textfield__input" type="text">
                                                           <label class="mdl-textfield__label" for="user1">Answer...</label>
                                                         </div>
-                                                        <button id="btnCreateTeam" onclick="verifyAnswer()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                                        <button id="btnCreateTeam" onclick="verify2()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                                                             Submit
                                                         </button>
                                                 </div>
@@ -130,7 +129,7 @@
                                                           <input id="answerTry" class="mdl-textfield__input" type="text">
                                                           <label class="mdl-textfield__label" for="user1">Answer...</label>
                                                         </div>
-                                                        <button id="btnCreateTeam" onclick="verifyAnswer()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                                        <button id="btnCreateTeam" onclick="verifyAnswer(3)" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                                                             Submit
                                                         </button>
                                                 </div>

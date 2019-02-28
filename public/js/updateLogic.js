@@ -10,28 +10,53 @@ var answers = { 1 : ['herzstein', 'herzstein amph', 'herzstein amphiteater', 'he
 
 var database = firebase.database();
 
+invokeVerifyAnswer = (event) => {
+    console.log("DID THIS HAPPEN");
+    let arg1 = event.target.getAttribute('data-arg1');
+    alert('DID THIS HAPPEN');
+    verifyAnswer(arg1);
+    //hope function is in window.
+    //Else the respective object need to be used
+};
 
-function verifyAnswer() {
+function verify1() {
+        verifyAnswer(1);
+}
+function verify2() {
+        verifyAnswer(2);
+}
+function verify3() {
+        verifyAnswer(3);
+}
+
+
+
+
+
+function verifyAnswer(questionNum) {
+        console.log("DID THIS HAPPEN");
         var teamName = document.getElementById('teamName').value;
-        var questionNum = document.getElementById('submittedQuestion').value;
+        // var questionNum = document.getElementById('submittedQuestion').value;
+        console.log(questionNum);
         var inputString = document.getElementById('answerTry').value;
         console.log(inputString.toUpperCase());
         var copyArray = answers[1];
         if (questionNum === 1) {
                 //handle array differently
-                for (var str : answers[1]) {
+                answers[1].forEach((str) => {
                         if (inputString.toString().toUpperCase() === str.toUpperCase()){
                                 alert("YOU GOT ONEEEEEEEE :D");
                                 //write to the database;
                                 database.ref('teams').once('value').then((data) => updateScoreAnswer(data, teamName, questionNum));
-                                location.reload();
+                                // location.reload();
                                 return;
                                 // updateScoreAnswer(teamName);
                         } else {
                                 copyArray.shift();
                         }
-                }
+                });
                 if (copyArray.length == 0) {
+                        console.log("this one");
                         alert("Not quite.... keep trying!");
                 }
         }
@@ -39,9 +64,12 @@ function verifyAnswer() {
                 alert("YOU GOT ONEEEEEEEE :D");
                 //write to the database;
                 database.ref('teams').once('value').then((data) => updateScoreAnswer(data, teamName, questionNum));
-                location.reload();
+                // location.reload();
                 // updateScoreAnswer(teamName);
         } else {
+                console.log(inputString.toUpperCase());
+                console.log(answers[questionNum].toUpperCase());
+                console.log("this other one");
                 alert("Not quite.... keep trying!");
         }
 }
