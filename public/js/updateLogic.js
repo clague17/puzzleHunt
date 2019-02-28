@@ -1,6 +1,6 @@
 
-var answers = { 1 : ['herzstein', 'herzstein amph', 'herzstein amphiteater', 'herzstein'],
-                2 : 'spencer',
+var answers = { 1 : 'spencer',
+                2 : ['herzstein', 'herzstein amph', 'herzstein amphiteater', 'herzstein'],
                 3 : 'ihatecomp',
                 4 : 'nlogn',
                 5 : 'sheik',
@@ -48,15 +48,15 @@ function verifyAnswer(questionNum) {
         console.log(questionNum);
         var inputString = document.getElementById('answerTry' + questionNum).value;
         console.log(inputString.toUpperCase());
-        var copyArray = answers[1];
-        if (questionNum === 1) {
+        var copyArray = answers[2];
+        if (questionNum === 2) {
                 //handle array differently
-                answers[1].forEach((str) => {
+                answers[2].forEach((str) => {
                         if (inputString.toString().toUpperCase() === str.toUpperCase()){
                                 alert("YOU GOT ONEEEEEEEE :D");
                                 //write to the database;
                                 database.ref('teams').once('value').then((data) => updateScoreAnswer(data, teamName, questionNum));
-                                // location.reload();
+                                location.reload();
                                 return;
                                 // updateScoreAnswer(teamName);
                         } else {
@@ -66,18 +66,21 @@ function verifyAnswer(questionNum) {
                 if (copyArray.length == 0) {
                         console.log("this one");
                         alert("Not quite.... keep trying!");
+                        location.reload();
                 }
         }
         else if (inputString.toString().toUpperCase() === answers[questionNum].toUpperCase()) {
                 alert("YOU GOT ONEEEEEEEE :D");
                 //write to the database;
                 database.ref('teams').once('value').then((data) => updateScoreAnswer(data, teamName, questionNum));
+                location.reload();
                 // location.reload();
                 // updateScoreAnswer(teamName);
         } else {
                 console.log(inputString.toUpperCase());
                 console.log(answers[questionNum].toUpperCase());
                 alert("Not quite.... keep trying!");
+                location.reload();
         }
 }
 
