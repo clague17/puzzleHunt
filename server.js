@@ -9,7 +9,9 @@ app.get('/js/logic.js',function(req,res){
    res.sendFile(path.join(__dirname + '/js/logic.js'));
 });
 
-
+app.get('question1', function(req, res) {
+        req.POST.iteritems()
+})
 
 app.set('view engine', 'ejs')
 

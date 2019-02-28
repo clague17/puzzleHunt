@@ -28,17 +28,25 @@ function verify2() {
 function verify3() {
         verifyAnswer(3);
 }
-
-
-
+function verify4() {
+        verifyAnswer(4);
+}
+function verify5() {
+        verifyAnswer(5);
+}
+function verify6() {
+        verifyAnswer(6);
+}
+function verify7() {
+        verifyAnswer(7);
+}
 
 
 function verifyAnswer(questionNum) {
-        console.log("DID THIS HAPPEN");
-        var teamName = document.getElementById('teamName').value;
+        var teamName = document.getElementById('teamName' + questionNum).value;
         // var questionNum = document.getElementById('submittedQuestion').value;
         console.log(questionNum);
-        var inputString = document.getElementById('answerTry').value;
+        var inputString = document.getElementById('answerTry' + questionNum).value;
         console.log(inputString.toUpperCase());
         var copyArray = answers[1];
         if (questionNum === 1) {
@@ -69,7 +77,6 @@ function verifyAnswer(questionNum) {
         } else {
                 console.log(inputString.toUpperCase());
                 console.log(answers[questionNum].toUpperCase());
-                console.log("this other one");
                 alert("Not quite.... keep trying!");
         }
 }
@@ -86,8 +93,9 @@ function updateScoreAnswer(data, correctAnswerTeam, questionNum) {
             var userList = teams[k].users;
             var puzzles = teams[k].puzzles;
             var puzzlesSolved = teams[k].puzzlesSolved;
-            console.log(k.toString());
-            if (correctAnswerTeam === teams[k].teamName) {
+            console.log(teamName.toString());
+            console.log(correctAnswerTeam);
+            if (correctAnswerTeam.toUpperCase() == teamName.toUpperCase()) {
                     if (!(questionNum in puzzles)) {
                             puzzles[questionNum] = true;
                             puzzlesSolved++;
