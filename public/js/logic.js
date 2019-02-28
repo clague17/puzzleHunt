@@ -131,7 +131,39 @@ window.fbAsyncInit = function() {
 
     var database = firebase.database();
 
+    function sanitizeInput(){
+           var allClear = false;
+           var actualUsers = []
+           teamName = document.getElementById('teamName').value;
+           var userArray = [    document.getElementById('user1').value,
+                                document.getElementById('user2').value,
+                                document.getElementById('user3').value,
+                                document.getElementById('user4').value
+                        ];
+
+           var regex = new RegExp("^\\s+$");
+           if (regex.test(teamName) {
+                   alert("Please enter a non-empty team Name");
+           }
+           for (var i = 0; i < userArray.length; i++) {
+                  if ((regex.test(userArray[i])) {
+                        alert("User " + i + " had malformed input, please try again");
+                } else {
+                        actualUsers.push(userArray[i]);
+                }
+           }
+           if (actualUsers.length < 2) {
+                   alert("need a team of 2 or more valid users!");
+           }
+
+    }
+
     function newTeam(){
+        if database.ref('teams').once('value'),then((data) => {
+                var teams = data.val();
+                var values = Object.values(teams);
+                var allTeams =
+        });
         var newTeam = {
             teamName: document.getElementById('teamName').value,
             users: [document.getElementById('user1').value,
