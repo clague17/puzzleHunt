@@ -9,6 +9,9 @@ var displayCounter = 0;
 // This is called with the results from from FB.getLoginStatus().
 var isLoggedIn = false;
 
+
+
+
 function statusChangeCallback(response) {
   console.log('statusChangeCallback');
   console.log(response);

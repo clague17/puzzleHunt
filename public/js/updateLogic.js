@@ -1,19 +1,35 @@
 
-var answers = { 1 : 'spencer',
-                2 : ['herzstein', 'herzstein amph', 'herzstein amphiteater', 'herzstein'],
-                3 : 'ihatecomp',
-                4 : 'nlogn',
-                5 : 'sheik',
-                6 : 'luaylove',
-                7 : 'zoran'};
-
+/*
+* DO NOT DECOMPILE.
+* I know I did stupid stuff please dont hurt me I have a family
+* also instead of perusing the website's files, try solving the puzzles yourself smh.
+* AGAINST THE HONOR CODE TO READ THE FILESSSSSSSSSS
+*/
 
 var database = firebase.database();
+var answers = {}
+//reading in the answers
+database.ref('shashankistrash117').once('value').then((data) => {
+        var answerDict = data.val();
+        var keys = Object.keys(answerDict);
+        for (var i = 0; i < keys.length; i++) {
+                var k = keys[i];
+                answers[i+1] = k.substring(1);
+        }
+});
+console.log(answers);
+// var answers = { 1 : 'spencer',
+//                 2 : ['herzstein', 'herzstein amph', 'herzstein amphiteater'],
+//                 3 : 'ihatecomp',
+//                 4 : 'nlogn',
+//                 5 : 'sheik',
+//                 6 : 'luaylove',
+//                 7 : 'zoran'};
 
 invokeVerifyAnswer = (event) => {
-    console.log("DID THIS HAPPEN");
+    // console.log("DID THIS HAPPEN");
     let arg1 = event.target.getAttribute('data-arg1');
-    alert('DID THIS HAPPEN');
+    // alert('DID THIS HAPPEN');
     verifyAnswer(arg1);
     //hope function is in window.
     //Else the respective object need to be used
