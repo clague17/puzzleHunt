@@ -17,7 +17,7 @@ database.ref('shashankistrash117').once('value').then((data) => {
                 answers[i+1] = k.substring(1);
         }
 });
-console.log(answers);
+// console.log(answers);
 // var answers = { 1 : 'spencer',
 //                 2 : ['herzstein', 'herzstein amph', 'herzstein amphiteater'],
 //                 3 : 'ihatecomp',
