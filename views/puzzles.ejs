@@ -10,7 +10,7 @@
   	}
   	.main-text-pane {
                 display: flex;
-                min-height: 512px;
+                min-height: 128px;
                 overflow: hidden;
   		flex-flow: column;
                 width: 100%;
@@ -58,32 +58,7 @@
     };
     firebase.initializeApp(config);
   </script>
-
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '987997444728003',
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v3.2'
-      });
-
-      FB.AppEvents.logPageView();
-
-    };
-
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  </script>
-
-  <div id="fb-root"></div>
-  <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&autoLogAppEvents=1&version=v3.2&appId=987997444728003"></script>
-  <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <script src="/js/updateLogic.js"></script>
 
   <!-- Always shows a header, even in smaller screens. -->
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -104,21 +79,128 @@
         <main class="mdl-layout__content" style="display:-webkit-box;">
                 <div class="content-grid">
                         <div class="content-grid" style="padding-top: 63px;">
-                                <div class="main-text-pane" id="light">
-                                        <div class="container">
-                                          <fieldset>
-                                            <form action="/" method="post">
-                                              <input name="city" type="text" class="ghost-input" placeholder="Enter a City" required>
-                                              <input type="submit" class="ghost-button" value="Get Weather">
-                                            </form>
-                                        </fieldset>
-                                          <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
-                                        </div>
-                                </div>
-                        </div>
                         <div class="content-grid mdl-grid">
         			<div class="mdl-cell mdl-cell--8-col">
+                                        <div id="Question 1">
+                                                <h1>Choose Your Own Adventure!</h1>
+                                                <div class="main-text-pane" id="light">
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="submittedQuestion" value="1" type="hidden">
+                                                          <input id="teamName" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="teamName">Team Name...</label>
+                                                        </div>
 
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="answerTry" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="user1">Answer...</label>
+                                                        </div>
+                                                        <button id="btnCreateTeam" onclick="verifyAnswer()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                                            Submit
+                                                        </button>
+                                                </div>
+                                        </div>
+                                        <div id="Question 2">
+                                                <h1>Mendeleev's Number Game</h1>
+                                                <div class="main-text-pane" id="dark">
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="teamName" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="teamName">Team Name...</label>
+                                                        </div>
+
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="answerTry" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="user1">Answer...</label>
+                                                        </div>
+                                                        <button id="btnCreateTeam" onclick="verifyAnswer()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                                            Submit
+                                                        </button>
+                                                </div>
+                                        </div>
+                                        <div id="Question 3">
+                                                <h1>All Right you Alien A**holes</h1>
+                                                <div class="main-text-pane" id="light">
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="teamName" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="teamName">Team Name...</label>
+                                                        </div>
+
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="answerTry" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="user1">Answer...</label>
+                                                        </div>
+                                                        <button id="btnCreateTeam" onclick="verifyAnswer()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                                            Submit
+                                                        </button>
+                                                </div>
+                                        </div>
+                                        <div id="Question 4">
+                                                <h1>The Final Project</h1>
+                                                <div class="main-text-pane" id="dark">
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="teamName" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="teamName">Team Name...</label>
+                                                        </div>
+
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="answerTry" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="user1">Answer...</label>
+                                                        </div>
+                                                        <button id="btnCreateTeam" onclick="verifyAnswer()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                                            Submit
+                                                        </button>
+                                                </div>
+                                        </div>
+                                        <div id="Question 5">
+                                                <h1>Do the Right Thing</h1>
+                                                <div class="main-text-pane" id="light">
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="teamName" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="teamName">Team Name...</label>
+                                                        </div>
+
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="answerTry" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="user1">Answer...</label>
+                                                        </div>
+                                                        <button id="btnCreateTeam" onclick="verifyAnswer()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                                            Submit
+                                                        </button>
+                                                </div>
+                                        </div>
+                                        <div id="Question 6">
+                                                <h1>The Final Destination</h1>
+                                                <div class="main-text-pane" id="light">
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="teamName" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="teamName">Team Name...</label>
+                                                        </div>
+
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="answerTry" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="user1">Answer...</label>
+                                                        </div>
+                                                        <button id="btnCreateTeam" onclick="verifyAnswer()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                                            Submit
+                                                        </button>
+                                                </div>
+                                        </div>
+                                        <div id="Question 7">
+                                                <h1>Will you Join me on the Rift?</h1>
+                                                <div class="main-text-pane" id="light">
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="teamName" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="teamName">Team Name...</label>
+                                                        </div>
+
+                                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                                          <input id="answerTry" class="mdl-textfield__input" type="text">
+                                                          <label class="mdl-textfield__label" for="user1">Answer...</label>
+                                                        </div>
+                                                        <button id="btnCreateTeam" onclick="verifyAnswer()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                                            Submit
+                                                        </button>
+                                                </div>
+                                        </div>
         			</div>
                         </div>
                 </div>

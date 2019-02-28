@@ -6,7 +6,9 @@ var createTeam = function() {
         //stress that this cannot be changed later.
 }
 
-// var answers = {1: }
+var answers = { 1 : 'answer1',
+                2 : 'answer2',
+                3 : 'answer3'};
 
 
 var team;
@@ -18,8 +20,7 @@ var displayCounter = 0;
 
     //getting elements for auth
 //Sign in User
-var provider = new firebase.auth.FacebookAuthProvider();
-provider.addScope(name);
+
 
 // firebase.auth().signInWithPopup(provider).then(function(result) {
 //   // This gives you a Facebook Access Token. You can use it to access the Facebook API.
@@ -131,8 +132,6 @@ window.fbAsyncInit = function() {
     var database = firebase.database();
 
     function newTeam(){
-
-
         var newTeam = {
             teamName: document.getElementById('teamName').value,
             users: [document.getElementById('user1').value,
@@ -140,10 +139,10 @@ window.fbAsyncInit = function() {
                         document.getElementById('user3').value,
                         document.getElementById('user4').value],
             puzzlesSolved: 0,
+            puzzles : {1000: true}
         }
         console.log(newTeam)
         ref.push(newTeam);
-
     }
 
     var sortedTeams;
@@ -152,7 +151,6 @@ window.fbAsyncInit = function() {
     ref.on('value', gotData, errData);
 
     function gotData(data){
-        console.log(data.val());
         var teams = data.val();
         var keys = Object.keys(teams);
 
@@ -182,8 +180,4 @@ window.fbAsyncInit = function() {
         console.log('Error!');
         alert('YOU DID SOMETHING WRONG LMAO');
         console.log(err);
-    }
-
-    function verifyAnswer(inputString) {
-
     }
