@@ -10,6 +10,9 @@ var team;
 var rank;
 var teamName;
 var puzzlesSolved;
+
+var displayCounter = 0;
+
     //getting elements for auth
 //Sign in User
 var provider = new firebase.auth.FacebookAuthProvider();
@@ -125,12 +128,7 @@ window.fbAsyncInit = function() {
     var database = firebase.database();
 
     function newTeam(){
-        //a new event/class/etc
 
-        if (!isLoggedIn) {
-                alert('Please log in using Facebook!');
-                return;
-        }
 
         var newTeam = {
             teamName: document.getElementById('teamName').value,
@@ -154,24 +152,29 @@ window.fbAsyncInit = function() {
         var keys = Object.keys(teams);
 
         console.log(keys);
-        for(var i=0; i<keys.length; i++){
+        for(var i=displayCounter; i<keys.length; i++){
+            displayCounter++;
             var k = keys[i];
             var teamName = teams[k].teamName;
-            var users = teams[k].users;
+            var userList = teams[k].users;
             var puzzlesSolved = teams[k].puzzlesSolved;
-            console.log(team,teamName,users,puzzlesSolved);
+
             var table = document.getElementById('teamList');
-            var row = table.insertRow(i);
+            var members = document.getElementById('usuarios');
+            var teamNames = document.getElementById('teamName');
+            var row = table.insertRow(1);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
+            teamNames.innerHTML = teamName;
+            // members.innerHTML = users;
             cell1.innerHTML = teamName;
-            cell2.innerHTML = users;
+            cell2.innerHTML = userList;
             cell3.innerHTML = puzzlesSolved;
         }
     }
     function errData(err){
         console.log('Error!');
-        alert('YOU FUCKED UP HOEEEEEEEE');
+        alert('YOU DID SOMETHING WRONG LMAO');
         console.log(err);
     }
