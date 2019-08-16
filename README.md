@@ -1,6 +1,6 @@
 # Rice CS Club Puzzle Hunt
 
-![Rice Logo](images/rice.png)
+![Rice Logo](public/docs/rice.png)
 
 Held during O(Week) in Spring 2019 by the [Rice CS Club](http://csclub.rice.edu/).
 

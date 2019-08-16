@@ -9,8 +9,13 @@ app.get('/js/logic.js',function(req,res){
    res.sendFile(path.join(__dirname + '/js/logic.js'));
 });
 
+app.get('docs/rice.png', function(req, res) {
+    console.log("what is happening");
+    res.sendFile(path.join(__dirname+ '/docs/rice.png'));
+});
+
 app.get('question1', function(req, res) {
-        req.POST.iteritems()
+    req.POST.iteritems()
 })
 
 app.set('view engine', 'ejs')

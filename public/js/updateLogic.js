@@ -27,9 +27,7 @@ database.ref('shashankistrash117').once('value').then((data) => {
 //                 7 : 'zoran'};
 
 invokeVerifyAnswer = (event) => {
-    // console.log("DID THIS HAPPEN");
     let arg1 = event.target.getAttribute('data-arg1');
-    // alert('DID THIS HAPPEN');
     verifyAnswer(arg1);
     //hope function is in window.
     //Else the respective object need to be used
