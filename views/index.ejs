@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,14 +5,14 @@
     .content-grid {
         margin-left: auto;
         margin-right: auto;
-        width: 1000px;
+        max-width: 1000px;
     }
     .main-text-pane {
         display: flex;
         min-height: 512px;
         overflow: hidden;
         flex-flow: column;
-        width: 100%;
+        max-width: 100%;
     }
 
     .mdl_layout__container {
@@ -37,17 +36,11 @@
     <meta charset="utf-8">
     <title>Puzzle Hunt</title>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <!-- <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
-    <script src="/node_modules/material-design-lite/material.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'> -->
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <!-- <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"> -->
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-
+    <!-- All the font awesome icons hosted remotely!-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -89,14 +82,13 @@
         <div class="content-grid" style="padding-top: 63px;">
             <div class="page-content">
                 <div class="main-text-pane" id="light">
-                    <div class="intro">
-                        <div class="mdl-typography--text-left" style="position: relative;">
-                            <h1>Rice CS Club Puzzle Hunt 2019</h1>
-                        </div>
-                        <div class="mdl-typography" style="position: relative;">
-                            <img src="docs/rice.png" alt="Rice panorama" style="max-width:1000px" >
-                            <p id="light" style="padding-left: 20px; padding-top:5%">This event is now over. If you want to see the <a href="docs/finalpuzzles.pdf">puzzles</a> and try it out yourself, feel free!</p>
-                        </div>
+                    <div class="mdl-typography--text-left" style="position: relative;">
+                        <h1>Rice CS Club Puzzle Hunt 2019</h1>
+                    </div>
+                    <img src="docs/rice.png" alt="Rice panorama">
+                    <div class="mdl-typography" style="position: relative;">
+                        <p id="light" style="padding-left: 20px; padding-top:5%">This event is now over. If you want to see the
+                            <a href="docs/finalpuzzles.pdf">puzzles</a> and try it out yourself, feel free!</p>
                     </div>
                     <div class="content-grid mdl-grid">
                         <div class="mdl-cell mdl-cell--8-col">
@@ -106,32 +98,27 @@
                             </div>
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input id="user1" class="mdl-textfield__input" type="text">
+                                <input id="user1" class="user mdl-textfield__input" data-number="1" type="text">
                                 <label class="mdl-textfield__label" for="user1">User 1...</label>
                             </div>
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input id="user2" class="mdl-textfield__input" type="text">
+                                <input id="user2" class="user mdl-textfield__input" data-number="2" type="text">
                                 <label class="mdl-textfield__label" for="user2">User 2...</label>
                             </div>
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 
-                                <input id="user3" class="mdl-textfield__input" type="text">
+                                <input id="user3" class="user mdl-textfield__input" data-number="3" type="text">
                                 <label class="mdl-textfield__label" for="user3">User 3...</label>
                             </div>
 
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <input id="user4" class="mdl-textfield__input" type="text">
+                                <input id="user4" class="user mdl-textfield__input" data-number="4" type="text">
                                 <label class="mdl-textfield__label" for="user4">User 4...</label>
                             </div>
-
-                            <!-- <input id="teamName" type="teamName" placeholder="Team Name">
-                            <input id="user1" type="user1" placeholder="Team Member 1">
-                            <input id="user2" type="user2" placeholder="Team Member 2">
-                            <input id="user3" type="user3" placeholder="Team Member 3">
-                            <input id="user4" type="user4" placeholder="Team Member 4"> -->
-                            <button id="btnCreateTeam" onclick="sanitizeInput()" class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                            <button id="btnCreateTeam" onclick="sanitizeInput()"
+                                class="btn btn-action mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                                 Create Team
                             </button>
                             <ul class="demo-list-two mdl-list" id="TABLEhere">
@@ -142,26 +129,20 @@
                                     <tr>
                                         <th class="mdl-data-table__cell--non-numeric" id="teamName">Team Name</th>
                                         <th class="mdl-data-table__cell--non-numeric" id="usuarios">Team Members</th>
-                                        <th class="mdl-data-table__cell--non-numeric" id="puzzlesSolved">PuzzlesSolved</th>
+                                        <th class="mdl-data-table__cell--non-numeric" id="puzzlesSolved">
+                                            <i class="fa fa-3x fa-check-square" style="color:green; padding-top: 9%; padding-left: 40%"></i>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 </tbody>
                             </table>
-                            <!-- <table class="demo-list-two mdl-list" id="teamList">
-                            <thead>
-                            <tr>
-                            <th style="width:10%">Rank</th>
-                            <th style="width:50%">Team Name</th>
-                            <th style="width:40%">Puzzles Solved</th>
-                        </thead>
-                    </table> -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 </main>
 </body>
 </html>

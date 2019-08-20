@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const app = express();
 
 app.use(express.static("public"));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/js/logic.js", function(req, res) {
@@ -10,7 +11,6 @@ app.get("/js/logic.js", function(req, res) {
 });
 
 app.get("docs/rice.png", function(req, res) {
-  console.log("what is happening");
   res.sendFile(path.join(__dirname + "/docs/rice.png"));
 });
 

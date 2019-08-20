@@ -1,9 +1,19 @@
+"use strict";
+
 var team;
 var rank;
 var teamName;
 var puzzlesSolved;
 
-var displayCounter = 0;
+const puzzleSchema = {
+  1: [{ solved: false }, { guesses: new Set([]) }],
+  2: [{ solved: false }, { guesses: new Set([]) }],
+  3: [{ solved: false }, { guesses: new Set([]) }],
+  4: [{ solved: false }, { guesses: new Set([]) }],
+  5: [{ solved: false }, { guesses: new Set([]) }],
+  6: [{ solved: false }, { guesses: new Set([]) }],
+  7: [{ solved: false }, { guesses: new Set([]) }]
+};
 
 // This is called with the results from from FB.getLoginStatus().
 var isLoggedIn = false;
@@ -96,40 +106,31 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 var database = firebase.database();
 
 function sanitizeInput() {
-  var allClear = false;
-  var actualUsers = [];
   teamName = document.getElementById("teamName").value;
-  var userArray = [
-    document.getElementById("user1").value,
-    document.getElementById("user2").value,
-    document.getElementById("user3").value,
-    document.getElementById("user4").value
-  ];
-
+  var users = Array.from(document.getElementsByClassName("user")).map(
+    val => val.value
+  );
+  console.table(users);
   var regex = new RegExp("^\\s+$");
   var emptyStr = new RegExp("^$");
   if (regex.test(teamName)) {
     alert("Please enter a non-empty team Name");
     return;
   }
-  for (var i = 0; i < userArray.length; i++) {
-    if (regex.test(userArray[i]) || emptyStr.test(userArray[i])) {
-      if (actualUsers.length < 2) {
-        alert("User " + i + " had malformed input, please try again");
-      }
-    } else {
-      actualUsers.push(userArray[i]);
+  for (var i = 0; i < users.length; i++) {
+    if (regex.test(users[i]) || emptyStr.test(users[i])) {
+      alert("User " + i + " had malformed input, please try again");
+      return;
     }
   }
-  console.log(actualUsers);
-  if (actualUsers.length < 2) {
+  if (users.length < 2) {
     alert("need a team of 2 or more valid users!");
     return;
   }
-  newTeam(teamName, actualUsers);
+  newTeam(teamName, users);
 }
 
-function newTeam(newName, actualUsers) {
+function newTeam(newName, users) {
   var uniqueName = true;
   database
     .ref("teams")
@@ -137,39 +138,44 @@ function newTeam(newName, actualUsers) {
     .then(data => {
       var teams = data.val();
       if (Object.values(teams) === null) {
+        console.log("No teams registered in the databse");
         return;
       }
-      var nameVals = Object.values(teams).map(val => val.teamName);
+      var names = Object.values(teams).map(t => t.teamName);
       // console.log(values);
-      console.log(nameVals);
+      console.log(names);
       console.log(newName.toString());
       console.log(newName in nameVals);
       if (nameVals.includes(newName)) {
         uniqueName = false;
       }
     });
+  console.log(uniqueName);
   if (uniqueName) {
     var newTeam = {
       teamName: teamName,
-      users: actualUsers,
+      users: users,
       puzzlesSolved: 0,
-      puzzles: { 1000: true }
+      score: 0,
+      puzzles: puzzleSchema // Have to initialize a dummy variable for database schema :)
     };
+    // Write this new team to the database
     database.ref("teams").push(newTeam);
   } else {
     alert("That team name has already been taken! Please choose a new one.");
   }
 }
 
+// Check the database for changes.
 var ref = database.ref("teams");
-ref.on("value", gotData, errData);
+ref.ref.on("value", gotData, errData);
 
 function gotData(data) {
   var teams = data.val();
   var keys = Object.keys(teams);
 
-  for (var i = displayCounter; i < keys.length; i++) {
-    displayCounter++;
+  // Manually populating a table from firebase
+  for (var i = 0; i < keys.length; i++) {
     var k = keys[i];
     var teamName = teams[k].teamName;
     var userList = teams[k].users;

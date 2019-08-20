@@ -1,3 +1,4 @@
+"use strict";
 /*
  * DO NOT DECOMPILE.
  * I know I did stupid stuff please dont hurt me I have a family
@@ -19,21 +20,13 @@ database
       answers[i + 1] = k.substring(1);
     }
   });
-// console.log(answers);
-// var answers = { 1 : 'spencer',
-//                 2 : ['herzstein', 'herzstein amph', 'herzstein amphiteater'],
-//                 3 : 'ihatecomp',
-//                 4 : 'nlogn',
-//                 5 : 'sheik',
-//                 6 : 'luaylove',
-//                 7 : 'zoran'};
 
-invokeVerifyAnswer = event => {
-  let arg1 = event.target.getAttribute("data-arg1");
-  verifyAnswer(arg1);
-  //hope function is in window.
-  //Else the respective object need to be used
-};
+// invokeVerifyAnswer = event => {
+//   let arg1 = event.target.getAttribute("data-arg1");
+//   verifyAnswer(arg1);
+//   //hope function is in window.
+//   //Else the respective object need to be used
+// };
 
 function verify1() {
   verifyAnswer(1);
@@ -59,7 +52,8 @@ function verify7() {
 
 function verifyAnswer(questionNum) {
   var teamName = document.getElementById("teamName" + questionNum).value;
-  // var questionNum = document.getElementById('submittedQuestion').value;
+  var questionNum = document.getElementById("submittedQuestion").value;
+  console.log("Team name: " + teamName);
   console.log(questionNum);
   var inputString = document.getElementById("answerTry" + questionNum).value;
   console.log(inputString.toUpperCase());
@@ -74,7 +68,7 @@ function verifyAnswer(questionNum) {
           .ref("teams")
           .once("value")
           .then(data => updateScoreAnswer(data, teamName, questionNum));
-        location.reload();
+        // location.reload();
         return;
         // updateScoreAnswer(teamName);
       } else {
@@ -82,7 +76,6 @@ function verifyAnswer(questionNum) {
       }
     });
     if (copyArray.length == 0) {
-      console.log("this one");
       alert("Not quite.... keep trying!");
       location.reload();
     }
@@ -95,7 +88,13 @@ function verifyAnswer(questionNum) {
       .ref("teams")
       .once("value")
       .then(data => updateScoreAnswer(data, teamName, questionNum));
-    location.reload();
+    // document.getElementById("Question1").style.display = "none";
+    const solvedPuzzle = document.getElementById("Solved1");
+    const questionPuzzle = document.getElementById("Question1");
+    questionPuzzle.classList.add("hide");
+    solvedPuzzle.style.display = "inline";
+    console.log("we did this");
+    // location.reload();
     // location.reload();
     // updateScoreAnswer(teamName);
   } else {
